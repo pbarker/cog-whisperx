@@ -27,7 +27,7 @@ class Predictor(BasePredictor):
     ) -> str:
         """Run a single prediction on the model"""
         with torch.inference_mode():
-            result = self.model.transcribe(str(audio), batch_size=batch_size) 
+            result = self.model.transcribe(str(audio), language='en', batch_size=batch_size) 
             # result is dict w/keys ['segments', 'language']
             # segments is a list of dicts,each dict has {'text': <text>, 'start': <start_time_msec>, 'end': <end_time_msec> }
             if align_output:
